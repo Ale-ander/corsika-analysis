@@ -7,7 +7,7 @@ from particle import Corsika7ID
 def to_pdg(cid: int) -> int:
     try:
         return int(Corsika7ID(cid).to_pdgid())
-    except Exception:  # ID non mappabile (record speciali, muoni 75/76, ecc.)
+    except Exception:  # not mappable IDs
         return 0
 
 def main(datfile, out="shower"):

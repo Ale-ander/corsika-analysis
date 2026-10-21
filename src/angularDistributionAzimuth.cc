@@ -91,7 +91,7 @@ int processFile(const std::string & fname, const std::set<int> & showers)
   hAzimuth->SetFillStyle(3005);
   hAzimuth->Draw();
 
-  hAzimuth->GetXaxis()->SetTitle("#phi [degree]");
+  hAzimuth->GetXaxis()->SetTitle("#theta [degree]");
 
   cAzimuth->Update();
 

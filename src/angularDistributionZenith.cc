@@ -50,7 +50,7 @@ int processFile(const std::string & fname, const std::set<int> & showers)
 
   const bool selectAll = showers.empty();
 
-  TH1D * hZenith = new TH1D("hZenith", "angular distribution", 360, -180, 180);
+  TH1D * hZenith = new TH1D("hZenith", "angular distribution", 360, 0, 90);
 
   crsRead::MCorsikaReader cr(fname, 3);
   crs::MRunHeader run;
@@ -66,7 +66,7 @@ int processFile(const std::string & fname, const std::set<int> & showers)
       if (!selectAll && !showers.count(i))
         continue;
 
-      hZenith->Fill(shower.GetPhi() * 180.0 / M_PI);
+      hZenith->Fill(shower.GetTheta() * 180.0 / M_PI);
       nFilled++;
     }
   }
