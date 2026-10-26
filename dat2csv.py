@@ -8,6 +8,7 @@ def to_pdg(cid: int) -> int:
     try:
         return int(Corsika7ID(cid).to_pdgid())
     except Exception:  # not mappable IDs
+        print(f"Warning: CORSIKA ID {cid} not mappable to PDG ID")
         return 0
 
 def main(datfile, out="shower"):
@@ -19,7 +20,6 @@ def main(datfile, out="shower"):
             corsika_id = (p["particle_description"] // 1000).astype(int)
             pdg_ids = [to_pdg(int(c)) for c in corsika_id]
 
-            rows = []
             for k in range(len(pdg_ids)):
                 c = pdg_ids[k]
                 x, y, t = p["x"][k], p["y"][k], p["t"][k]
